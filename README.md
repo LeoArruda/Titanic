@@ -1,5 +1,6 @@
 
 
+
 # Titanic
 Kaggle dataset
 
@@ -41,17 +42,22 @@ The test set should be used to see how well your model performs on unseen data. 
 ### Variable Notes
 
 #### pclass A proxy for socio-economic status (SES)__
-__1st__ = Upper
-__2nd__ = Middle
-__3rd__ = Lower
+    1st = Upper
+    2nd = Middle
+    3rd = Lower
 
 #### age - Age is fractional if less than 1. If the age is estimated, is it in the form of xx.5__
 
 #### sibsp - The dataset defines family relations in this way...
-__Sibling__ = brother, sister, stepbrother, stepsister
-__Spouse__ = husband, wife (mistresses and fiancés were ignored)
+
+    Sibling = brother, sister, stepbrother, stepsister
+
+    Spouse = husband, wife (mistresses and fiancés were ignored)
 
 #### parch - The dataset defines family relations in this way...
-__Parent__ = mother, father
-__Child__ = daughter, son, stepdaughter, stepson
-Some children travelled only with a nanny, therefore __parch=0 for them__.
+
+    Parent = mother, father
+
+    Child = daughter, son, stepdaughter, stepson
+      
+      *Some children travelled only with a nanny, therefore __parch=0 for them.
