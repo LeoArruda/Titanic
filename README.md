@@ -1,6 +1,3 @@
-
-
-
 # Titanic
 Kaggle dataset
 
@@ -61,3 +58,19 @@ The test set should be used to see how well your model performs on unseen data. 
     Child = daughter, son, stepdaughter, stepson
       
       *Some children travelled only with a nanny, therefore __parch=0 for them.
+
+
+### Data Preparation
+[ ] Apply the proper sex missing value accordingly to name Title
+[ ] Update missing value for Cabin accordingly to the Ticket number
+[ ] Update missing value for Cabin if some parent has Cabin information
+
+
+### Feature Engineering
+
+[X] Convert Sex from text to Numeric
+[ ] Convert Embarked from text to Numeric
+
+[ ] Pack the families in groups (Same cabin, same lastname,...)
+
+[ ] 
