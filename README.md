@@ -66,7 +66,7 @@ The test set should be used to see how well your model performs on unseen data. 
 [ ] Update missing value for Cabin if some parent has Cabin information
 
 
-### Feature Engineering
+### Task list
 
 [X] Convert Sex from text to Numeric
 
