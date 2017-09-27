@@ -69,8 +69,17 @@ The test set should be used to see how well your model performs on unseen data. 
 ### Feature Engineering
 
 [X] Convert Sex from text to Numeric
-[ ] Convert Embarked from text to Numeric
 
-[ ] Pack the families in groups (Same cabin, same lastname,...)
+[X] Convert Embarked from text to Numeric
 
-[ ] 
+[X] Pack the families in groups (Same cabin, same lastname,...)
+
+[X] Feature engineering ( new features from current ones )
+
+[X] Prepare the dataset to run
+
+[X] Evaluate Classification models
+
+[ ] Tune the best model
+
+[ ] Prepare data to send
