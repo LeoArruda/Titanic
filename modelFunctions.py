@@ -31,10 +31,10 @@ def runRandomForest(train_x, targets, run_gs = False):
 	if run_gs:
 		parameter_grid = {
 		'max_depth' : [4, 6, 8],
-		'n_estimators': [50, 10],
+		'n_estimators': [150, 100, 50, 10],
 		'max_features': ['sqrt', 'auto', 'log2'],
-		'min_samples_split': [1, 3, 10],
-		'min_samples_leaf': [1, 3, 10],
+		'min_samples_split': [2, 3, 5, 10],
+		'min_samples_leaf': [1, 3, 5, 10],
 		'bootstrap': [True, False],
 		}
 		forest = RandomForestClassifier()
@@ -45,7 +45,7 @@ def runRandomForest(train_x, targets, run_gs = False):
 		parameters = grid_search.best_params_
 		print('Best score: {}'.format(grid_search.best_score_))
 		print('Best parameters: {}'.format(grid_search.best_params_))
-	else: 
+	else:
 		parameters = {'bootstrap': False, 'min_samples_leaf': 3, 'n_estimators': 100, 'min_samples_split': 10, 'max_features': 'sqrt', 'max_depth': 6}
 		model = RandomForestClassifier(**parameters)
 		model.fit(train, targets)
@@ -54,7 +54,7 @@ def runRandomForest(train_x, targets, run_gs = False):
 def savePredict(model, dframe):
 	output = model.predict(dframe).astype(int)
 	df_output = pd.DataFrame()
-	aux = pd.read_csv('../../data/test.csv')
+	aux = pd.read_csv('../../output/test.csv')
 	df_output['PassengerId'] = aux['PassengerId']
 	df_output['Survived'] = output
 	df_output[['PassengerId','Survived']].to_csv('../../data/output.csv',index=False)
