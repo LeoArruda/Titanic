@@ -31,12 +31,13 @@ def runRandomForest(train_x, targets, run_gs = False):
 if run_gs:
 	parameter_grid = {
 		'max_depth' : [4, 6, 8],
-		'n_estimators': [50, 10],
+		'n_estimators': [150, 100, 50, 10],
 		'max_features': ['sqrt', 'auto', 'log2'],
-		'min_samples_split': [1, 3, 10],
-		'min_samples_leaf': [1, 3, 10],
+		'min_samples_split': [2, 3, 5, 10],
+		'min_samples_leaf': [1, 3, 5, 10],
 		'bootstrap': [True, False],
 		}
+<<<<<<< HEAD
 	forest = RandomForestClassifier()
 	cross_validation = StratifiedKFold(targets, n_folds=10)
 	grid_search = GridSearchCV(forest, scoring='accuracy', param_grid=parameter_grid, cv=cross_validation)
@@ -50,14 +51,30 @@ else:
 	model = RandomForestClassifier(**parameters)
 	model.fit(train, targets)
 return calcScore(model, train_X , targets, scoring='accuracy')
+=======
+		forest = RandomForestClassifier()
+		cross_validation = StratifiedKFold(targets, n_folds=5)
+		grid_search = GridSearchCV(forest, scoring='accuracy', param_grid=parameter_grid, cv=cross_validation)
+		grid_search.fit(train, targets)
+		model = grid_search
+		parameters = grid_search.best_params_
+		print('Best score: {}'.format(grid_search.best_score_))
+		print('Best parameters: {}'.format(grid_search.best_params_))
+	else:
+		parameters = {'bootstrap': False, 'min_samples_leaf': 3, 'n_estimators': 100, 'min_samples_split': 10, 'max_features': 'sqrt', 'max_depth': 6}
+		model = RandomForestClassifier(**parameters)
+		model.fit(train, targets)
+	calcScore(model, train_X , targets, scoring='accuracy')
+>>>>>>> 9bc4d47d1ddf6f7222b36ce11368934676b39fc3
 
 def savePredict(model, dframe):
 	output = model.predict(dframe).astype(int)
 	df_output = pd.DataFrame()
-	aux = pd.read_csv('../../data/test.csv')
+	aux = pd.read_csv('../../output/test.csv')
 	df_output['PassengerId'] = aux['PassengerId']
 	df_output['Survived'] = output
 	df_output[['PassengerId','Survived']].to_csv('../../data/output.csv',index=False)
+<<<<<<< HEAD
     
 def evaluateModels(train_x, targets):
     resultScores = {'RandomForestClassifier': 0.0,
@@ -112,3 +129,5 @@ def evaluateModels(train_x, targets):
 
 
 
+=======
+>>>>>>> 9bc4d47d1ddf6f7222b36ce11368934676b39fc3
